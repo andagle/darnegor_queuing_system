@@ -1,16 +1,18 @@
 {
   "name": "dar-queue-server",
   "version": "1.0.0",
-  "description": "DAR Negros Oriental Queuing System - backend (in-memory, no database)",
-  "main": "index.js",
+  "description": "DAR Negros Oriental Queuing System - backend",
+  "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
     "express": "^4.19.2",
+    "pg": "^8.22.0",
     "socket.io": "^4.7.5"
   },
   "devDependencies": {
