@@ -1,0 +1,17 @@
+{
+  "name": "dar-queue-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DAR Negros Oriental Queuing System — monorepo root",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev": "concurrently -n SERVER,CLIENT -c green,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run build && npm start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

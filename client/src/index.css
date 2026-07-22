@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body bg-surface-light text-ink-light dark:bg-surface-dark dark:text-ink-dark transition-colors duration-300;
+}
+
+::selection {
+  background-color: rgba(33, 242, 122, 0.35);
+}
+
+/* Visible keyboard focus everywhere, respects accessibility */
+:focus-visible {
+  outline: 2px solid #21f27a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Ticket-stub signature: a perforated tear-line like a real queue ticket */
+.ticket-stub {
+  position: relative;
+}
+
+.ticket-stub .tear-line {
+  border-top: 2px dashed rgba(33, 242, 122, 0.55);
+  position: relative;
+}
+
+.ticket-stub .tear-line::before,
+.ticket-stub .tear-line::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: inherit;
+}
+.ticket-stub .tear-line::before { left: -7px; }
+.ticket-stub .tear-line::after { right: -7px; }
+
+/* Scrollbar styling to match theme */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(33, 242, 122, 0.4);
+  border-radius: 8px;
+}
