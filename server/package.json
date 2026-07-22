@@ -2,7 +2,7 @@
   "name": "dar-queue-server",
   "version": "1.0.0",
   "description": "DAR Negros Oriental Queuing System - backend",
-  "main": "server.js",
+  "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
