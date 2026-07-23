@@ -124,7 +124,7 @@ app.post("/api/tickets/call-next", async(req,res)=>{
 
     io.emit("announce",{
       number: ticket.number,
-      service: ticket.service?.name
+      service: ticket.service?.name || ticket.service || "General Service"
     });
 
 
