@@ -5,7 +5,6 @@ const express = require("express");
 const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
-require("dotenv").config();
 
 const store = require("./store");
 
@@ -167,7 +166,8 @@ await broadcastState();
 
 
 io.emit("announce",{
-number:ticket.number
+  number: ticket.number,
+  service: ticket.service?.name || ticket.service || "General Service"
 });
 
 
@@ -212,7 +212,8 @@ await broadcastState();
 
 
 io.emit("announce",{
-number:ticket.number
+  number: ticket.number,
+  service: ticket.service?.name || ticket.service || "General Service"
 });
 
 
@@ -484,4 +485,8 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", () => {
     console.log("Client disconnected:", socket.id);
   });
+});
+
+server.listen(PORT, () => {
+  console.log(`DAR Queue API running on port ${PORT}`);
 });
