@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle.jsx";
 import { useQueue } from "../context/QueueContext.jsx";
+import logo from "../assets/1.png";
+
+
 
 export default function HeaderBar({ subtitle, backTo = "/", backLabel = "Home" }) {
   const { connected } = useQueue();
@@ -8,8 +11,8 @@ export default function HeaderBar({ subtitle, backTo = "/", backLabel = "Home" }
   return (
     <header className="flex items-center justify-between border-b border-surface-light-3 dark:border-surface-dark-3 px-5 py-4 sm:px-8">
       <div className="flex items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-ink-light dark:bg-neon-400 text-neon-400 dark:text-surface-dark font-display font-bold shadow-neon">
-          DAR
+        <div className="flex h-12 w-12 items-center justify-center rounded-lg">
+           <img src={logo} alt="My Logo" />
         </div>
         <div className="leading-tight">
           <p className="font-display text-sm font-semibold tracking-wide">

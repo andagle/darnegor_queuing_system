@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle.jsx";
+import logo from "../assets/1.png";
 
 export default function Landing() {
   return (
@@ -10,8 +11,12 @@ export default function Landing() {
 
       <main className="flex flex-1 flex-col items-center justify-center px-6 pb-16 -mt-10">
         <div className="mb-10 text-center">
-          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-ink-light dark:bg-neon-400 font-display text-xl font-bold text-neon-400 dark:text-surface-dark shadow-neon-lg">
-            DAR
+          <div className="flex items-center justify-center">
+              <img 
+                  src={logo} 
+                  alt="My Logo" 
+                  className="h-32 w-32 object-contain"
+              />
           </div>
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-neon-600 dark:text-neon-400">
             Negros Oriental Provincial Office
