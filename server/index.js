@@ -27,8 +27,12 @@ app.use(express.json());
 
 // Broadcast updated queue state
 async function broadcastState() {
-  const state = await store.publicState();
-  io.emit("state", state);
+  try {
+    const state = await store.publicState();
+    io.emit("state", state);
+  } catch (err) {
+    console.error("Broadcast failed:", err);
+  }
 }
 
 
@@ -467,50 +471,17 @@ next();
 
 // ================= SOCKET.IO =================
 
+io.on("connection", async (socket) => {
+  console.log("Client connected:", socket.id);
 
-io.on("connection",
-async(socket)=>{
+  try {
+    const state = await store.publicState();
+    socket.emit("state", state);
+  } catch (err) {
+    console.error("Failed to send initial state:", err);
+  }
 
-
-console.log(
-"Client connected:",
-socket.id
-);
-
-
-
-const state =
-await store.publicState();
-
-
-
-socket.emit(
-"state",
-state
-);
-
-
-
-socket.on("disconnect",()=>{
-
-console.log(
-"Client disconnected:",
-socket.id
-);
-
-});
-
-
-});
-
-
-
-
-
-server.listen(PORT,()=>{
-
-console.log(
-`DAR Queue Server running on port ${PORT}`
-);
-
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
+  });
 });
